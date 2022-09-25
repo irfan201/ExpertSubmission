@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:layout_gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_animals"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_person_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_marginStart="15dp"
+            android:id="@+id/tv_nama_hewan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nama_hewan"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iv_animals"
+            app:layout_constraintTop_toTopOf="@+id/iv_animals" />
+
+        <TextView
+            android:id="@+id/tv_animal_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:gravity="center"
+            android:background="@drawable/shape_type"
+            android:text="@string/animal_type"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_nama_hewan"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nama_hewan"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_latin_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/shape_type"
+            android:gravity="center"
+            android:text="@string/latin_name"
+            android:layout_marginStart="20dp"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_animal_type"
+            app:layout_constraintTop_toTopOf="@+id/tv_animal_type"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>
