@@ -1,5 +1,6 @@
 package com.example.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ class AnimalsAdapter: RecyclerView.Adapter<AnimalsAdapter.listViewHolder>() {
     private val listAnimals = ArrayList<Animals>()
     var onItemClick: ((Animals) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Animals>?){
         if (newListData == null) return
         listAnimals.clear()
