@@ -4,22 +4,26 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.core.R
 import com.example.core.databinding.ItemAnimalsBinding
 import com.example.core.domain.model.Animals
+import com.example.core.utils.DiffUtils
+
 class AnimalsAdapter: RecyclerView.Adapter<AnimalsAdapter.listViewHolder>() {
 
     private val listAnimals = ArrayList<Animals>()
     var onItemClick: ((Animals) -> Unit)? = null
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Animals>?){
         if (newListData == null) return
+        val diffutils = DiffUtils(listAnimals, newListData)
+        val diffResult = DiffUtil.calculateDiff(diffutils)
         listAnimals.clear()
         listAnimals.addAll(newListData)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): listViewHolder {
