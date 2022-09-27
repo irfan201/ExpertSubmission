@@ -1,5 +1,6 @@
 package com.example.favorite
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,6 +25,7 @@ class FavoriteActivity : AppCompatActivity() {
     private val favoriteViewModel: FavoriteViewModel by viewModels {
         factory
     }
+    val animalsAdapter = AnimalsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +39,7 @@ class FavoriteActivity : AppCompatActivity() {
             .appDepedencies(EntryPointAccessors.fromApplication(this, FavoriteModuleDepedencies::class.java))
             .build().inject(this)
 
-        val animalsAdapter = AnimalsAdapter()
+
 
         with(binding.rvFavorite){
             layoutManager = LinearLayoutManager(context)
@@ -62,8 +64,15 @@ class FavoriteActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onStart() {
+        super.onStart()
+        binding.rvFavorite.recycledViewPool.clear()
+        animalsAdapter.notifyDataSetChanged()
+    }
+
     override fun onDestroy() {
-        super.onDestroy()
         binding.rvFavorite.adapter = null
+        super.onDestroy()
     }
 }
