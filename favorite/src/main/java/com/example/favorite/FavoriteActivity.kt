@@ -61,4 +61,9 @@ class FavoriteActivity : AppCompatActivity() {
         })
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.rvFavorite.adapter = null
+    }
 }
